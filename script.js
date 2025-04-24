@@ -17,34 +17,54 @@ document.addEventListener('click', (e) => {
 
 // Gallery Images with Lightbox
 const galleryImages = [{
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+1',
+        src: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80',
         alt: 'Custom T-Shirt Design 1',
-        title: 'Custom T-Shirt Design 1'
+        title: 'Urban Street Collection'
     },
     {
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+2',
+        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
         alt: 'Custom T-Shirt Design 2',
-        title: 'Custom T-Shirt Design 2'
+        title: 'Street Style Essentials'
     },
     {
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+3',
-        alt: 'Custom T-Shirt Design 3',
-        title: 'Custom T-Shirt Design 3'
+        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+        alt: 'Custom T-Shirt Design 2',
+        title: 'Street Style Essentials'
     },
     {
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+4',
+        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+        alt: 'Custom T-Shirt Design 2',
+        title: 'Street Style Essentials'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
         alt: 'Custom T-Shirt Design 4',
-        title: 'Custom T-Shirt Design 4'
+        title: 'Custom Design Series'
     },
     {
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+5',
+        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+        alt: 'Custom T-Shirt Design 4',
+        title: 'Custom Design Series'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+        alt: 'Custom T-Shirt Design 4',
+        title: 'Custom Design Series'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+        alt: 'Custom T-Shirt Design 4',
+        title: 'Custom Design Series'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
         alt: 'Custom T-Shirt Design 5',
-        title: 'Custom T-Shirt Design 5'
+        title: 'Limited Edition Prints'
     },
     {
-        src: 'https://via.placeholder.com/800x600/8F4DFF/FFFFFF?text=T-Shirt+Design+6',
+        src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=80',
         alt: 'Custom T-Shirt Design 6',
-        title: 'Custom T-Shirt Design 6'
+        title: 'Artist Collaboration Series'
     }
 ];
 
@@ -60,29 +80,44 @@ lightbox.innerHTML = `
 `;
 document.body.appendChild(lightbox);
 
-// Populate Gallery with Lightbox functionality
-const galleryGrid = document.querySelector('.gallery-grid');
-galleryImages.forEach((image, index) => {
-    const imgContainer = document.createElement('div');
-    imgContainer.className = 'gallery-item-container';
+// Function to populate gallery
+function populateGallery() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    if (!galleryGrid) return;
 
-    const imgElement = document.createElement('img');
-    imgElement.src = image.src;
-    imgElement.alt = image.alt;
-    imgElement.classList.add('gallery-item');
+    galleryGrid.innerHTML = ''; // Clear existing content
 
-    imgContainer.appendChild(imgElement);
-    galleryGrid.appendChild(imgContainer);
+    galleryImages.forEach((image, index) => {
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'gallery-item-container';
 
-    // Add click event for lightbox
-    imgContainer.addEventListener('click', () => {
-        lightbox.querySelector('.lightbox-img').src = image.src;
-        lightbox.querySelector('.lightbox-img').alt = image.alt;
-        lightbox.querySelector('.lightbox-caption').textContent = image.title;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        const img = new Image();
+        img.src = image.src;
+        img.alt = image.alt;
+        img.loading = 'lazy'; // Enable lazy loading
+        img.classList.add('gallery-item');
+
+        // Add loading animation
+        imgContainer.innerHTML = '<div class="loading-spinner"></div>';
+
+        img.onload = () => {
+            imgContainer.innerHTML = ''; // Remove loading spinner
+            imgContainer.appendChild(img);
+        };
+
+        // Add click event for lightbox
+        imgContainer.addEventListener('click', () => {
+            const lightboxImg = lightbox.querySelector('.lightbox-img');
+            lightboxImg.src = image.src;
+            lightboxImg.alt = image.alt;
+            lightbox.querySelector('.lightbox-caption').textContent = image.title;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        galleryGrid.appendChild(imgContainer);
     });
-});
+}
 
 // Close lightbox
 lightbox.addEventListener('click', (e) => {
@@ -90,6 +125,11 @@ lightbox.addEventListener('click', (e) => {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
     }
+});
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    populateGallery();
 });
 
 // Smooth Scrolling with offset for fixed header
@@ -304,48 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Gallery functionality
-    const galleryImages = [{
-            src: 'path/to/image1.jpg',
-            alt: 'Custom T-shirt Design 1',
-            title: 'Urban Street Style'
-        },
-        // Add more images here
-    ];
-
-    function createGalleryItem(image) {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-
-        const img = new Image();
-        img.src = image.src;
-        img.alt = image.alt;
-        img.loading = 'lazy';
-
-        img.addEventListener('load', () => {
-            item.appendChild(img);
-        });
-
-        img.addEventListener('error', () => {
-            console.warn(`Failed to load image: ${image.src}`);
-            item.innerHTML = `<div class="gallery-error">Image unavailable</div>`;
-        });
-
-        return item;
-    }
-
-    // Populate gallery with error handling
-    if (galleryGrid && galleryImages.length > 0) {
-        try {
-            galleryImages.forEach(image => {
-                const item = createGalleryItem(image);
-                galleryGrid.appendChild(item);
-            });
-        } catch (error) {
-            console.error('Error populating gallery:', error);
-        }
-    }
 
     // Form handling with validation
     if (contactForm) {
