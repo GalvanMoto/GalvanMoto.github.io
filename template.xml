@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:js='false' b:defaultwidgetversion='2' b:layoutsVersion='3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+    <title><data:blog.title/></title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+    <script src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js' type='text/javascript'/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-7N7CRB3DEC'/>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7N7CRB3DEC');
+    </script>
+
+    <b:skin><![CDATA[
+    /* Reset and Base Styles */
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-purple: #8F4DFF;
+        --dark-purple: #5C2CA0;
+        --soft-lavender: #EDE6FF;
+        --pure-white: #FFFFFF;
+        --deep-charcoal: #1C1C1C;
+        --neon-pink: #FF1F8F;
+        --electric-blue: #00F0FF;
+        --header-height: 80px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    body {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--pure-white);
+        background-color: var(--deep-charcoal);
+        min-height: 100%;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header and Navigation */
+    .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: var(--header-height);
+        background-color: rgba(28, 28, 28, 0.95);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        will-change: transform;
+        transform: translateZ(0);
+        transition: transform 0.3s ease;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 5%;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        margin-right: auto;
+        padding: 0.5rem 0;
+    }
+
+    .logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        height: 100%;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        transition: var(--transition);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    .logo a:hover img {
+        transform: scale(1.05) translateZ(0);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nav-links a {
+        color: var(--pure-white);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+        transition: width 0.3s ease;
+        transform: translateZ(0);
+    }
+
+    .nav-links a:hover {
+        color: var(--primary-purple);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .mobile-menu {
+        display: none;
+        color: var(--pure-white);
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0.5rem;
+        border: none;
+        background: none;
+        transition: var(--transition);
+    }
+
+    /* Main Content Spacing */
+    main {
+        padding-top: var(--header-height);
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        :root {
+            --header-height: 70px;
+        }
+        .nav-links {
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --header-height: 60px;
+        }
+        .mobile-menu {
+            display: block;
+        }
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--deep-charcoal);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .nav-links.active {
+            transform: translateX(0);
+        }
+        .logo img {
+            height: 45px;
+        }
+        .nav-links a {
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo img {
+            height: 40px;
+        }
+        nav {
+            padding: 0 1rem;
+        }
+    }
+
+    /* Performance Optimizations */
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Fix iOS Safari 100vh issue */
+    @supports (-webkit-touch-callout: none) {
+        .nav-links {
+            height: -webkit-fill-available;
+        }
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+        font-weight: 1000;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+    }
+
+    h1 {
+        font-size: 6rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: var(--deep-charcoal);
+        color: var(--pure-white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0.1;
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 6rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: textReveal 1.5s ease-out;
+    }
+
+    .hero h1 br {
+        display: block;
+    }
+
+    .hero h1 span {
+        display: block;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        color: var(--soft-lavender);
+        opacity: 0;
+        animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+
+    /* Gallery Section */
+    .gallery {
+        padding: 8rem 0;
+        position: relative;
+        background-color: var(--deep-charcoal);
+    }
+
+    .gallery h2 {
+        text-align: center;
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+        position: relative;
+        color: var(--pure-white);
+    }
+
+    .gallery h2::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .gallery-item-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        aspect-ratio: 1;
+    }
+
+    .gallery-item {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .gallery-item-container:hover .gallery-item img {
+        transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .gallery-item:hover::after {
+        opacity: 0.3;
+    }
+
+    /* Services Section */
+    .services {
+        padding: 8rem 0;
+        position: relative;
+        background-color: var(--deep-charcoal);
+    }
+
+    .services::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0.05;
+        z-index: 1;
+    }
+
+    .services h2 {
+        text-align: center;
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+        position: relative;
+        z-index: 2;
+        color: var(--pure-white);
+    }
+
+    .services h2::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .service-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 1;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .service-card:hover::before {
+        opacity: 0.1;
+    }
+
+    .service-card > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        color: var(--primary-purple);
+        transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+        color: var(--neon-pink);
+        transform: scale(1.1);
+    }
+
+    .service-title {
+        font-size: 1.5rem;
+        color: var(--pure-white);
+        margin: 0;
+    }
+
+    .service-description {
+        color: var(--soft-lavender);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .service-link {
+        color: var(--primary-purple);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .service-link:hover {
+        color: var(--neon-pink);
+    }
+
+    .service-link::after {
+        content: '→';
+        transition: var(--transition);
+    }
+
+    .service-link:hover::after {
+        transform: translateX(5px);
+    }
+
+    @media (max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .gallery-grid,
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery h2,
+        .services h2 {
+            font-size: 2.5rem;
+        }
+    }
+
+    /* Contact Section */
+    .contact {
+        padding: 8rem 0;
+        position: relative;
+        background-color: var(--deep-charcoal);
+    }
+
+    .contact::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0.05;
+        z-index: 1;
+    }
+
+    .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .contact h2 {
+        text-align: center;
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+        position: relative;
+    }
+
+    .contact h2::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+    }
+
+    .contact-info {
+        padding-right: 2rem;
+    }
+
+    .contact-text {
+        font-size: 1.2rem;
+        color: var(--soft-lavender);
+        margin-bottom: 3rem;
+    }
+
+    .contact-methods {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        transition: var(--transition);
+    }
+
+    .contact-method:hover {
+        transform: translateX(10px);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-method i {
+        font-size: 2rem;
+        color: var(--primary-purple);
+    }
+
+    .contact-method-text h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--pure-white);
+    }
+
+    .contact-method-text p {
+        color: var(--soft-lavender);
+    }
+
+    .contact-method-text a {
+        color: var(--soft-lavender);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .contact-method-text a:hover {
+        color: var(--primary-purple);
+    }
+
+    #contact-form {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--pure-white);
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        color: var(--pure-white);
+        font-family: inherit;
+        transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-purple);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    .form-submit {
+        text-align: center;
+    }
+
+    .form-submit .cta-button {
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        color: var(--pure-white);
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-submit .cta-button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--neon-pink), var(--primary-purple));
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .form-submit .cta-button:hover::after {
+        opacity: 1;
+    }
+
+    .success-message,
+    .error-message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .success-message {
+        background-color: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+    }
+
+    .error-message {
+        background-color: rgba(244, 67, 54, 0.2);
+        color: #f44336;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--deep-charcoal);
+        color: var(--pure-white);
+        padding: 6rem 0 2rem;
+        position: relative;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0.2;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-brand .brand-logo {
+        display: inline-block;
+    }
+
+    .footer-brand .brand-logo img {
+        height: 50px;
+        transition: var(--transition);
+    }
+
+    .footer-brand .brand-logo:hover img {
+        transform: scale(1.05);
+    }
+
+    .footer-brand h3 {
+        font-size: 1.5rem;
+        color: var(--pure-white);
+    }
+
+    .footer-brand p {
+        color: var(--soft-lavender);
+        line-height: 1.6;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-links h4 {
+        font-size: 1.2rem;
+        color: var(--pure-white);
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .footer-links h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+    }
+
+    .footer-links ul {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+        color: var(--soft-lavender);
+        text-decoration: none;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-purple);
+    }
+
+    .footer-links a i {
+        font-size: 0.8rem;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--pure-white);
+        font-size: 1.2rem;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-social a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--primary-purple), var(--neon-pink));
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+        transform: translateY(-5px);
+    }
+
+    .footer-social a:hover::before {
+        opacity: 1;
+    }
+
+    .footer-contact h4 {
+        font-size: 1.2rem;
+        color: var(--pure-white);
+        position: relative;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-contact h4::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--neon-pink));
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .contact-item i {
+        color: var(--primary-purple);
+        font-size: 1.2rem;
+    }
+
+    .contact-item p {
+        color: var(--soft-lavender);
+    }
+
+    .contact-item a {
+        color: var(--soft-lavender);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .contact-item a:hover {
+        color: var(--primary-purple);
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+        color: var(--soft-lavender);
+        font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes textReveal {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--deep-charcoal);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(var(--primary-purple), var(--neon-pink));
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(var(--neon-pink), var(--primary-purple));
+    }
+    ]]></b:skin>
+</head>
+
+<body>
+    <header class='sticky-header'>
+        <nav>
+            <div class='logo'>
+                <a expr:href='data:blog.homepageUrl'>
+                    <img src='logo.png' alt='Lagataar Logo'/>
+                </a>
+            </div>
+            <div class='nav-links'>
+                <a href='#Gallery'>Gallery</a>
+                <a href='#services'>Services</a>
+                <a href='#about'>About</a>
+                <a href='#contact'>Contact</a>
+            </div>
+            <div class='mobile-menu'>
+                <i class='fas fa-bars'/>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id='home' class='hero'>
+            <div class='hero-content'>
+                <h1>Bold Design.<br/>Desi Expression.</h1>
+                <p>We create vibrant, street-smart designs that tell your story through custom printed apparel.</p>
+            </div>
+        </section>
+
+        <section id='Gallery' class='gallery'>
+            <h2>Gallery</h2>
+            <div class='gallery-grid'>
+                <b:section id='gallery' maxwidgets='12' showaddelement='yes'>
+                    <b:widget id='HTML1' locked='false' title='Gallery Items' type='HTML' visible='true'>
+                        <b:widget-settings>
+                            <b:widget-setting name='content'>
+                                <div class='gallery-item-container'>
+                                    <div class='gallery-item'>
+                                        <img src='https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=80' alt='Gallery Item 1'/>
+                                    </div>
+                                </div>
+                                <div class='gallery-item-container'>
+                                    <div class='gallery-item'>
+                                        <img src='https://images.unsplash.com/photo-1622445275576-721325763afe?w=500&q=80' alt='Gallery Item 2'/>
+                                    </div>
+                                </div>
+                                <div class='gallery-item-container'>
+                                    <div class='gallery-item'>
+                                        <img src='https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=500&q=80' alt='Gallery Item 3'/>
+                                    </div>
+                                </div>
+                            </b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+                            <div class='widget-content'>
+                                <data:content/>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
+        </section>
+
+        <section id='services' class='services'>
+            <h2>Services</h2>
+            <div class='services-grid'>
+                <b:section id='services' maxwidgets='4' showaddelement='yes'>
+                    <b:widget id='HTML2' locked='false' title='Service Cards' type='HTML' visible='true'>
+                        <b:widget-settings>
+                            <b:widget-setting name='content'>
+                                <div class='service-card'>
+                                    <div class='service-icon'>
+                                        <i class='fas fa-print'></i>
+                                    </div>
+                                    <h3 class='service-title'>Custom Printing</h3>
+                                    <p class='service-description'>Transform your vision into wearable art with our premium quality custom printing service.</p>
+                                    <a href='#contact' class='service-link'>Learn More</a>
+                                </div>
+                                <div class='service-card'>
+                                    <div class='service-icon'>
+                                        <i class='fas fa-palette'></i>
+                                    </div>
+                                    <h3 class='service-title'>Design Service</h3>
+                                    <p class='service-description'>Let our artists create unique designs that capture your style and message.</p>
+                                    <a href='#contact' class='service-link'>Learn More</a>
+                                </div>
+                                <div class='service-card'>
+                                    <div class='service-icon'>
+                                        <i class='fas fa-boxes'></i>
+                                    </div>
+                                    <h3 class='service-title'>Bulk Orders</h3>
+                                    <p class='service-description'>High-volume printing without compromising on quality or attention to detail.</p>
+                                    <a href='#contact' class='service-link'>Learn More</a>
+                                </div>
+                                <div class='service-card'>
+                                    <div class='service-icon'>
+                                        <i class='fas fa-handshake'></i>
+                                    </div>
+                                    <h3 class='service-title'>Artist Collabs</h3>
+                                    <p class='service-description'>Partner with us to create limited edition collections that make a statement.</p>
+                                    <a href='#contact' class='service-link'>Learn More</a>
+                                </div>
+                            </b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+                            <div class='widget-content'>
+                                <data:content/>
+                            </div>
+                        </b:includable>
+                    </b:widget>
+                </b:section>
+            </div>
+        </section>
+
+        <section id='about' class='about'>
+            <div class='about-content'>
+                <div class='about-text'>
+                    <h2>Our Story</h2>
+                    <p>At Lagataar, we're more than just a t-shirt printing company. We're a creative powerhouse dedicated to bringing your bold ideas to life through exceptional design and quality printing.</p>
+                    <p>Born from a passion for street culture and desi aesthetics, we've been transforming blank canvases into wearable art since 2024. Our mission is to help you express your unique style through custom apparel that makes a statement.</p>
+
+                    <div class='about-features'>
+                        <b:section id='features' maxwidgets='4' showaddelement='yes'>
+                            <b:widget id='HTML3' locked='false' title='Features' type='HTML' visible='true'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>Features content will be added here</b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id='contact' class='contact'>
+            <div class='contact-content'>
+                <div class='contact-info'>
+                    <h2>Get in Touch</h2>
+                    <p class='contact-text'>Ready to bring your ideas to life? We're here to help you create something amazing. Reach out to us through any of these channels or fill out the form.</p>
+
+                    <div class='contact-methods'>
+                        <b:section id='contact-methods' maxwidgets='3' showaddelement='yes'>
+                            <b:widget id='HTML4' locked='false' title='Contact Methods' type='HTML' visible='true'>
+                                <b:widget-settings>
+                                    <b:widget-setting name='content'>Contact methods content will be added here</b:widget-setting>
+                                </b:widget-settings>
+                                <b:includable id='main'>
+                                    <div class='widget-content'>
+                                        <data:content/>
+                                    </div>
+                                </b:includable>
+                            </b:widget>
+                        </b:section>
+                    </div>
+                </div>
+
+                <form id='contact-form' onsubmit='return sendEmail(event)'>
+                    <div class='form-group'>
+                        <label for='name'>Your Name</label>
+                        <input autocomplete='name' id='name' name='name' required='required' type='text'/>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for='email'>Email Address</label>
+                        <input autocomplete='email' id='email' name='email' required='required' type='email'/>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for='message'>Your Message</label>
+                        <textarea autocomplete='off' id='message' name='message' required='required'></textarea>
+                    </div>
+
+                    <div class='form-submit'>
+                        <button class='cta-button' type='submit'>Send Message</button>
+                    </div>
+                    <div class='success-message' id='success-message' style='display: none;'>
+                        Thank you! Your message has been sent successfully.
+                    </div>
+                    <div class='error-message' id='error-message' style='display: none;'>
+                        Oops! Something went wrong. Please try again.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class='footer-content'>
+            <div class='footer-brand'>
+                <a class='brand-logo' expr:href='data:blog.homepageUrl'>
+                    <img src='logo.png' alt='Lagataar Logo'/>
+                </a>
+                <p>Bold Expression Through Design. Creating unique, custom-designed t-shirts that reflect your personality and style.</p>
+                <div class='footer-social'>
+                    <a aria-label='Follow us on Instagram' href='https://instagram.com/lagataar.in' target='_blank'>
+                        <i class='fab fa-instagram'/>
+                    </a>
+                    <a aria-label='Contact us on WhatsApp' href='https://wa.me/919898610793' target='_blank'>
+                        <i class='fab fa-whatsapp'/>
+                    </a>
+                </div>
+            </div>
+
+            <div class='footer-links'>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href='#work'><i class='fas fa-chevron-right'/> Our Work</a></li>
+                    <li><a href='#services'><i class='fas fa-chevron-right'/> Services</a></li>
+                    <li><a href='#about'><i class='fas fa-chevron-right'/> About Us</a></li>
+                    <li><a href='#contact'><i class='fas fa-chevron-right'/> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class='footer-contact'>
+                <h4>Contact Info</h4>
+                <div class='contact-info'>
+                    <div class='contact-item'>
+                        <i class='fas fa-envelope'/>
+                        <p><a href='mailto:lagataarclothings.in@gmail.com'>lagataarclothings.in@gmail.com</a></p>
+                    </div>
+                    <div class='contact-item'>
+                        <i class='fas fa-phone'/>
+                        <p><a href='tel:+919898610793'>+91 989 861 0793</a></p>
+                    </div>
+                    <div class='contact-item'>
+                        <i class='fas fa-map-marker-alt'/>
+                        <p>Vadodara, Gujarat<br/>India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='footer-bottom'>
+            <p>&copy; 2025 Lagataar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <b:section id='main' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
+            <b:includable id='main' var='top'>
+                <b:if cond='data:mobileView'>
+                    <b:else/>
+                    <div class='blog-posts hfeed'>
+                        <b:loop values='data:posts' var='post'>
+                            <b:include data='post' name='post'/>
+                        </b:loop>
+                    </div>
+                </b:if>
+            </b:includable>
+        </b:widget>
+    </b:section>
+
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+        })();
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenu.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact Form Submission
+        function sendEmail(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+
+            const templateParams = {
+                from_name: form.name.value,
+                from_email: form.email.value,
+                message: form.message.value
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    form.reset();
+                }, function(error) {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                });
+
+            return false;
+        }
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.background = 'var(--background-color)';
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -17,54 +17,19 @@ document.addEventListener('click', (e) => {
 
 // Gallery Images with Lightbox
 const galleryImages = [{
-        src: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80',
+        src: './assets/images/1.png',
         alt: 'Custom T-Shirt Design 1',
         title: 'Urban Street Collection'
     },
     {
-        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+        src: 'assets/images/2.png',
         alt: 'Custom T-Shirt Design 2',
         title: 'Street Style Essentials'
     },
     {
-        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+        src: 'assets/images/3.png',
         alt: 'Custom T-Shirt Design 2',
         title: 'Street Style Essentials'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
-        alt: 'Custom T-Shirt Design 2',
-        title: 'Street Style Essentials'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
-        alt: 'Custom T-Shirt Design 4',
-        title: 'Custom Design Series'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
-        alt: 'Custom T-Shirt Design 4',
-        title: 'Custom Design Series'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
-        alt: 'Custom T-Shirt Design 4',
-        title: 'Custom Design Series'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
-        alt: 'Custom T-Shirt Design 4',
-        title: 'Custom Design Series'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
-        alt: 'Custom T-Shirt Design 5',
-        title: 'Limited Edition Prints'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=80',
-        alt: 'Custom T-Shirt Design 6',
-        title: 'Artist Collaboration Series'
     }
 ];
 
@@ -449,4 +414,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Clean up on page unload
     window.addEventListener('unload', cleanup);
+});
+
+// Shop Now Button Click Handler
+document.querySelector('.button-container .cta-button').addEventListener('click', () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
 });
