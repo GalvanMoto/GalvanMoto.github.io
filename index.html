@@ -104,11 +104,19 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="#Gallery">Gallery</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="#services" aria-label="View our services">Services</a>
+                <a href="#about" aria-label="Learn about us">About</a>
+                <a href="#contact" aria-label="Contact us">Contact</a>
+                <div class="dropdown" role="navigation" aria-label="Product categories">
+                    <a href="#" class="dropdown-trigger" aria-expanded="false" aria-controls="product-menu">Products <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu" id="product-menu" role="menu">
+                        <a href="tshirt.html" role="menuitem">T-Shirts</a>
+                        <a href="mugandsipper.html" role="menuitem">Mugs & Sippers</a>
+                        <a href="mousepad.html" role="menuitem">Mousepads</a>
+                        <a href="keychains.html" role="menuitem">Keychains</a>
+                    </div>
+                </div>
             </div>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -124,12 +132,111 @@
             </div>
         </section>
 
-        <section id="Gallery" class="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <!-- Gallery items will be populated by JavaScript -->
+        <section class="products-section" aria-labelledby="products-heading">
+            <div class="products-header">
+                <h1 id="products-heading">Our Products</h1>
+                <p>Discover our collection of high-quality products designed to enhance your lifestyle</p>
+            </div>
+            <div class="products-grid" role="list">
+                <!-- Product Card 1 -->
+                <article class="product-card" role="listitem">
+                    <div class="product-image">
+                        <img src="images/product1.jpg" alt="Premium T-Shirt with custom design" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400?text=Product+1';">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">T-Shirts</h3>
+                        <div class="product-price" aria-label="Price range">₹250-₹750*</div>
+                        <p class="product-description">Experience the perfect blend of style and functionality with our premium product.</p>
+                        <div class="product-meta">
+                            <div class="rating" aria-label="4.5 out of 5 stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+                                <span class="reviews">(24 reviews)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="tshirt.html" class="cta-button" aria-label="View T-Shirt details">View Details</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 2 -->
+                <article class="product-card" role="listitem">
+                    <div class="product-image">
+                        <img src="images/product2.jpg" alt="Custom designed Mug and Sipper set" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400?text=Product+2';">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mugs & Sippers</h3>
+                        <div class="product-price" aria-label="Price range">₹200-₹300*</div>
+                        <p class="product-description">Elevate your experience with our innovative and stylish product design.</p>
+                        <div class="product-meta">
+                            <div class="rating" aria-label="5 out of 5 stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <span class="reviews">(18 reviews)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="mugandsipper.html" class="cta-button" aria-label="View Mugs & Sippers details">View Details</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 3 -->
+                <article class="product-card" role="listitem">
+                    <div class="product-image">
+                        <img src="images/product3.jpg" alt="Custom designed Mousepad" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400?text=Product+3';">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mousepads</h3>
+                        <div class="product-price" aria-label="Price">₹150*</div>
+                        <p class="product-description">Discover the perfect combination of quality and performance.</p>
+                        <div class="product-meta">
+                            <div class="rating" aria-label="4 out of 5 stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="far fa-star" aria-hidden="true"></i>
+                                <span class="reviews">(12 reviews)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="mousepad.html" class="cta-button" aria-label="View Mousepad details">View Details</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Product Card 4 -->
+                <article class="product-card" role="listitem">
+                    <div class="product-image">
+                        <img src="images/product4.jpg" alt="Custom designed Keychain" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400?text=Product+4';">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Keychains</h3>
+                        <div class="product-price" aria-label="Price">₹150*</div>
+                        <p class="product-description">Experience luxury and comfort with our premium collection.</p>
+                        <div class="product-meta">
+                            <div class="rating" aria-label="5 out of 5 stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <span class="reviews">(32 reviews)</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="keychains.html" class="cta-button" aria-label="View Keychain details">View Details</a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
+
 
         <section id="services" class="services">
             <h2>Services</h2>
@@ -304,6 +411,7 @@
                     <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
                     <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
                 </ul>
             </div>
 

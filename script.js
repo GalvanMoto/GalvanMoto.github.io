@@ -1,10 +1,30 @@
 // Mobile Menu Toggle
 const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const dropdowns = document.querySelectorAll('.dropdown');
 
 mobileMenu.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
+});
+
+// Mobile Dropdown Toggle
+dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.dropdown-trigger');
+    trigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        }
+    });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
 });
 
 // Close mobile menu when clicking outside
@@ -16,21 +36,14 @@ document.addEventListener('click', (e) => {
 });
 
 // Gallery Images with Lightbox
-const galleryImages = [{
-        src: './assets/images/1.png',
-        alt: 'Custom T-Shirt Design 1',
-        title: 'Urban Street Collection'
-    },
-    {
-        src: 'assets/images/2.png',
-        alt: 'Custom T-Shirt Design 2',
-        title: 'Street Style Essentials'
-    },
-    {
-        src: 'assets/images/3.png',
-        alt: 'Custom T-Shirt Design 2',
-        title: 'Street Style Essentials'
-    }
+const galleryImages = [
+    // Add your gallery images here
+    // Example structure:
+    // {
+    //     src: 'path/to/image.jpg',
+    //     alt: 'Image description',
+    //     title: 'Image title'
+    // }
 ];
 
 // Create Lightbox
@@ -48,39 +61,35 @@ document.body.appendChild(lightbox);
 // Function to populate gallery
 function populateGallery() {
     const galleryGrid = document.querySelector('.gallery-grid');
-    if (!galleryGrid) return;
-
     galleryGrid.innerHTML = ''; // Clear existing content
 
-    galleryImages.forEach((image, index) => {
-        const imgContainer = document.createElement('div');
-        imgContainer.className = 'gallery-item-container';
+    galleryImages.forEach(image => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item-container';
 
-        const img = new Image();
-        img.src = image.src;
-        img.alt = image.alt;
-        img.loading = 'lazy'; // Enable lazy loading
-        img.classList.add('gallery-item');
+        if (image.type === 'instagram') {
+            galleryItem.className += ' instagram-container';
+            galleryItem.innerHTML = `
+                <iframe src="${image.embedUrl}" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        allowtransparency="true" 
+                        loading="lazy" 
+                        style="width: 100%; max-width: 540px; min-width: 326px; height: 100%; min-height: 500px; border: none; overflow: hidden;">
+                </iframe>
+            `;
+        } else {
+            galleryItem.innerHTML = `
+                <div class="gallery-item">
+                    <img src="${image.src}" alt="${image.alt}" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <h3>${image.title}</h3>
+                    </div>
+                </div>
+            `;
+        }
 
-        // Add loading animation
-        imgContainer.innerHTML = '<div class="loading-spinner"></div>';
-
-        img.onload = () => {
-            imgContainer.innerHTML = ''; // Remove loading spinner
-            imgContainer.appendChild(img);
-        };
-
-        // Add click event for lightbox
-        imgContainer.addEventListener('click', () => {
-            const lightboxImg = lightbox.querySelector('.lightbox-img');
-            lightboxImg.src = image.src;
-            lightboxImg.alt = image.alt;
-            lightbox.querySelector('.lightbox-caption').textContent = image.title;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        galleryGrid.appendChild(imgContainer);
+        galleryGrid.appendChild(galleryItem);
     });
 }
 

@@ -2,15 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.lagataar.in/</loc>
-    <lastmod>2025-04-24</lastmod>
+    <lastmod>2025-05-06</lastmod>
     <priority>1.00</priority>
   </url>
   <!-- Add more pages here as you create them -->
-  <!-- Example:
   <url>
-    <loc>https://www.lagataar.in/about</loc>
-    <lastmod>2025-04-24</lastmod>
+    <loc>https://www.lagataar.in/tshirt</loc>
+    <lastmod>2025-05-06</lastmod>
     <priority>0.80</priority>
   </url>
-  -->
+  <url>
+    <loc>https://www.lagataar.in/mugandsipper</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.lagataar.in/mousepad</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.lagataar.in/keychains</loc>
+    <lastmod>2025-05-06</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
